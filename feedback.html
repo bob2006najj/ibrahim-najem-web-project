@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Historic Monuments</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">🏛️ Historic Monuments</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1>Send Us Your Feedback</h1>
+        <p style="text-align: center; margin-bottom: 2rem;">We'd love to hear your thoughts about our website and the monuments featured here. Please fill out the form below.</p>
+        
+        <form id="feedback-form" class="feedback-form">
+            <div class="form-group">
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" required>
+                <span class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+                <span class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" required></textarea>
+                <span class="error-message"></span>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Feedback</button>
+            
+            <div id="success-message" class="success-message"></div>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Historic Monuments. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+

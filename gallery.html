@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Touristic Monuments - Gallery</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">🏛️ Historic Monuments</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1>Monument Gallery</h1>
+        
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search monuments...">
+            <select id="monument-select">
+                <option value="">All Monuments</option>
+                <option value="Great Pyramid">The Great Pyramid</option>
+                <option value="Colosseum">The Colosseum</option>
+                <option value="Taj Mahal">Taj Mahal</option>
+                <option value="Machu Picchu">Machu Picchu</option>
+                <option value="Stonehenge">Stonehenge</option>
+            </select>
+        </div>
+
+        <div class="gallery" id="gallery-container">
+            <div class="gallery-item" data-name="Great Pyramid">
+                <div class="placeholder-text">🏛️ Great Pyramid</div>
+                <img src="images/The Great Pyramid.png" alt="The Great Pyramid of Giza" onload="this.parentElement.querySelector('.placeholder-text').classList.add('hidden')" onerror="this.style.display='none'">
+                <div class="monument-name"><a href="monument-1.html">The Great Pyramid</a></div>
+            </div>
+            <div class="gallery-item" data-name="Colosseum">
+                <div class="placeholder-text">🏛️ Colosseum</div>
+                <img src="images/The Colosseum.png" alt="The Colosseum in Rome" onload="this.parentElement.querySelector('.placeholder-text').classList.add('hidden')" onerror="this.style.display='none'">
+                <div class="monument-name"><a href="monument-2.html">The Colosseum</a></div>
+            </div>
+            <div class="gallery-item" data-name="Taj Mahal">
+                <div class="placeholder-text">🏛️ Taj Mahal</div>
+                <img src="images/Taj Mahal.png" alt="Taj Mahal in Agra" onload="this.parentElement.querySelector('.placeholder-text').classList.add('hidden')" onerror="this.style.display='none'">
+                <div class="monument-name"><a href="monument-3.html">Taj Mahal</a></div>
+            </div>
+            <div class="gallery-item" data-name="Machu Picchu">
+                <div class="placeholder-text">🏛️ Machu Picchu</div>
+                <img src="images/Machu Picchu.png" alt="Machu Picchu in Peru" onload="this.parentElement.querySelector('.placeholder-text').classList.add('hidden')" onerror="this.style.display='none'">
+                <div class="monument-name"><a href="monument-4.html">Machu Picchu</a></div>
+            </div>
+            <div class="gallery-item" data-name="Stonehenge">
+                <div class="placeholder-text">🏛️ Stonehenge</div>
+                <img src="images/Stonehenge.png" alt="Stonehenge in England" onload="this.parentElement.querySelector('.placeholder-text').classList.add('hidden')" onerror="this.style.display='none'">
+                <div class="monument-name"><a href="monument-5.html">Stonehenge</a></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal for Gallery -->
+    <div id="gallery-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <img id="modal-image" class="modal-image" src="" alt="">
+            <h2 id="modal-title" class="modal-title"></h2>
+            <p id="modal-link" style="text-align: center; margin-top: 1rem;"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Historic Monuments. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Simple search/filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('search-input');
+            const monumentSelect = document.getElementById('monument-select');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            function filterGallery() {
+                const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
+                const selectedMonument = monumentSelect ? monumentSelect.value : '';
+                
+                galleryItems.forEach(item => {
+                    const name = item.getAttribute('data-name').toLowerCase();
+                    let shouldShow = true;
+                    
+                    // Filter by search input
+                    if (searchTerm && !name.includes(searchTerm)) {
+                        shouldShow = false;
+                    }
+                    
+                    // Filter by select dropdown
+                    if (selectedMonument) {
+                        const itemName = item.getAttribute('data-name');
+                        if (itemName !== selectedMonument) {
+                            shouldShow = false;
+                        }
+                    }
+                    
+                    item.style.display = shouldShow ? '' : 'none';
+                });
+            }
+            
+            if (searchInput) {
+                searchInput.addEventListener('input', filterGallery);
+            }
+            
+            if (monumentSelect) {
+                monumentSelect.addEventListener('change', filterGallery);
+            }
+        });
+    </script>
+</body>
+</html>
+
